@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    padding: 40px 0;
   }
 
   .container {
@@ -79,7 +79,7 @@
     margin-top: 30px;
   }
 
-  /* 🌹 Roses */
+  /* Roses */
   .rose {
     position: fixed;
     top: -20px;
@@ -94,17 +94,17 @@
     }
   }
 
-  /* 💬 Bubble */
+  /* Acrostic Bubble */
   .bubble {
     position: fixed;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     background: #ff5fa2;
     color: white;
     padding: 30px 45px;
-    border-radius: 40px;
-    font-size: 28px;
+    border-radius: 35px;
+    font-size: 26px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     text-align: left;
     white-space: pre-line;
@@ -124,8 +124,62 @@
 <div class="container">
   <h1>💗 Love Quiz 💗</h1>
 
-  <!-- QUESTIONS (UNCHANGED) -->
-  <!-- … all your questions stay exactly the same … -->
+  <!-- QUESTIONS -->
+  <div class="question">
+    What was the date of our first kiss?
+    <input id="q1">
+    <button onclick="checkAnswer(1, 'february 8, 2025')">Submit</button>
+    <div class="attempts" id="a1">Attempts left: 3</div>
+    <div class="feedback" id="f1"></div>
+  </div>
+
+  <div class="question">
+    Where was the first place we went to eat?
+    <input id="q2">
+    <button onclick="checkAnswer(2, 'fat boys pizza')">Submit</button>
+    <div class="attempts" id="a2">Attempts left: 3</div>
+    <div class="feedback" id="f2"></div>
+  </div>
+
+  <div class="question">
+    What were the first type of flowers you gave me?
+    <input id="q3">
+    <button onclick="checkAnswer(3, 'tulips')">Submit</button>
+    <div class="attempts" id="a3">Attempts left: 3</div>
+    <div class="feedback" id="f3"></div>
+  </div>
+
+  <div class="question">
+    What color top was I wearing when you first met me?
+    <input id="q4">
+    <button onclick="checkAnswer(4, 'brown')">Submit</button>
+    <div class="attempts" id="a4">Attempts left: 3</div>
+    <div class="feedback" id="f4"></div>
+  </div>
+
+  <div class="question">
+    When did we first say I love you?
+    <input id="q5">
+    <button onclick="checkAnswer(5, 'may 13, 2025')">Submit</button>
+    <div class="attempts" id="a5">Attempts left: 3</div>
+    <div class="feedback" id="f5"></div>
+  </div>
+
+  <div class="question">
+    What’s our favorite game to play together?
+    <input id="q6">
+    <button onclick="checkAnswer(6, 'minecraft')">Submit</button>
+    <div class="attempts" id="a6">Attempts left: 3</div>
+    <div class="feedback" id="f6"></div>
+  </div>
+
+  <div class="question">
+    What was our first gifts to each other?
+    <input id="q7">
+    <button onclick="checkAnswer(7, 'giftcards')">Submit</button>
+    <div class="attempts" id="a7">Attempts left: 3</div>
+    <div class="feedback" id="f7"></div>
+  </div>
 
   <!-- FINAL -->
   <div class="final" id="final">
@@ -136,10 +190,8 @@
   </div>
 </div>
 
-<!-- 🎵 LOVE SONG -->
-<audio id="loveSong">
-  <source src="lovesong.mp3" type="audio/mpeg">
-</audio>
+<!-- 🎵 MUSIC -->
+<audio id="loveSong" src="song.mp3"></audio>
 
 <script>
   const attempts = {1:3,2:3,3:3,4:3,5:3,6:3,7:3};
@@ -177,16 +229,10 @@
   function checkFinal() {
     const answer = document.getElementById("finalAnswer").value.trim().toLowerCase();
     if (answer === "hassnu" || answer === "hassnu pie") {
+      document.getElementById("loveSong").play();
       launchRoses();
       showPoem();
-      playSong();
     }
-  }
-
-  function playSong() {
-    const song = document.getElementById("loveSong");
-    song.currentTime = 0;
-    song.play();
   }
 
   function launchRoses() {
@@ -195,7 +241,6 @@
       rose.className = "rose";
       rose.textContent = "🌹";
       rose.style.left = Math.random() * 100 + "vw";
-      rose.style.animationDuration = 4 + Math.random() * 3 + "s";
       document.body.appendChild(rose);
       setTimeout(() => rose.remove(), 7000);
     }
@@ -210,7 +255,7 @@ Athletic
 Sweet
 Smart
 Admirable
-Nice`;
+Nice 💖`;
     document.body.appendChild(bubble);
   }
 </script>
